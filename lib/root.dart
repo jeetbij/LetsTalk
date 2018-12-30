@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'auth.dart';
 import 'login.dart';
-import 'dashboard.dart';
 import 'homepage.dart';
 
 class Root extends StatefulWidget {
@@ -45,7 +44,6 @@ class _RootState extends State<Root> {
     if(_authStatus == AuthStatus.notSignedIn){
       return Login(auth: widget.auth, onSignedIn: _onSignedIn,);
     }else{
-      // return Dashboard(auth: widget.auth, onSignedOut: _signedOut,);
       return HomePage(auth: widget.auth, onSignedOut: _signedOut,);
     }
   }

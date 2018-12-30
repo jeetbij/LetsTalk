@@ -14,7 +14,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
-  List<Widget> _users = [CircularProgressIndicator()];
+  List<Widget> _users = [];
 
   void _signOut() async {
     try{
@@ -50,7 +50,7 @@ class _HomePageState extends State<HomePage> {
               trailing: Text("Today"),
               onTap: () {
                 Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => ChatPage(fname: values[key]['fname']))
+                  MaterialPageRoute(builder: (context) => ChatPage(fname: values[key]['fname'], uid: values[key]['userId'], auth: widget.auth,))
                 );
               },
             ),
@@ -78,7 +78,7 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       body: Scrollbar(
-        child: ListView(
+        child: _users == null ? Center(child: CircularProgressIndicator()) : ListView(
           padding: EdgeInsets.all(10.0),
           children: _users
         ),
